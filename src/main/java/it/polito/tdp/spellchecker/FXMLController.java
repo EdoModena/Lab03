@@ -62,7 +62,7 @@ public class FXMLController {
     	String text=txttext.getText().toLowerCase();
     	text.replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_'~()\\[\\]\"]","");
     	if(language.compareTo("")==0 || text.compareTo("")==0) {
-    		System.out.println("Inserire lingua e/o testo");
+    		System.out.println("Errore in lingua o testo");
     		return;
     	}
     	List<String> InputText = new ArrayList<String>();
@@ -70,7 +70,7 @@ public class FXMLController {
     	for(int i=0;i<Array.length;i++) {
     		InputText.add(Array[i]);
     	}
-    	List<Richword> rich= model.spellCheckText(InputText, language);
+    	List<Richword> rich= model.spellCheckTextDichotomic(InputText, language);
     	int c=0;
     	for(Richword r: rich) {
     		if(!r.isCorrect()) {
